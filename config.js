@@ -1,118 +1,98 @@
-// S C R I P T  O R I  B Y  Bochilgaming 🔭
-// Ditulis Ulang Oleh ImYanXiao
-// Credits, jangan dihapus atau diubah!
-
-// - - THANKS TO - -
-// • Allah SWT
-// • Nurutomo
-// • Bochilgaming
-// • Rominaru
-// • Kannachann
-// • FahriAdison
-// • The.Sad.Boy01
-// • Rlxfly
-// • Rasel comel
-// • ImYanXiao
-// • Xtreshe (Beban)
-// • Dll
-
-//[!] Jangan Lupa Ganti Ownernya
-
 import { watchFile, unwatchFile } from 'fs'
 import chalk from 'chalk'
 import { fileURLToPath } from 'url'
+import fs from 'fs'
 import moment from 'moment-timezone'
 
-/*============= WAKTU =============*/
-let wibh = moment.tz('Asia/Jakarta').format('HH')
-    let wibm = moment.tz('Asia/Jakarta').format('mm')
-    let wibs = moment.tz('Asia/Jakarta').format('ss')
-    let wktuwib = `${wibh} H ${wibm} M ${wibs} S`
-    
-    let d = new Date(new Date + 3600000)
-    let locale = 'id'
-    // d.getTimeZoneOffset()
-    // Offset -420 is 18.00
-    // Offset    0 is  0.00
-    // Offset  420 is  7.00
-    let weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(d / 84600000) % 5]
-    let week = d.toLocaleDateString(locale, { weekday: 'long' })
-    let date = d.toLocaleDateString(locale, {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    })
-      
+/*Oᴡɴᴇʀ number*/
+global.owner = [
+  ['6285932251730', '️One', true],
+  ['6285932251730', '️Two', true],
+  ['6285932251730', '️Three', true],
+  ['6285932251730', '️Four', true],
+  ['6285932251730', '️Five', true],
+  ['6285932251730', '️Six', true],
+  ['6285932251730', '️Seven', true],
+  ['6285932251730', '️Eight', true],
+  ['6285932251730', '️Nine', true],
+  ['6285932251730', '️Teen', true]
+]
+global.mods = []
+global.prems = []
+global.girlfren = []
+
+/*Website*/
+global.APIs = {
+ amel : 'https://melcanz.com',
+ bg : 'http://bochil.ddns.net',
+ bsbt : 'https://rest-beni.herokuapp.com',
+ bx : 'https://bx-hunter.herokuapp.com',
+ dhnjing : 'https://dhnjing.xyz',
+ dzx : 'https://api.dhamzxploit.my.id',
+ erdwepe : 'https://erdwpe-api.herokuapp.com',
+ fdci : 'https://api.fdci.se',
+ hardianto : 'https://hardianto.xyz',
+ jonaz : 'https://jonaz-api-v2.herokuapp.com',
+ LeysCoder : 'https://leyscoders-api.herokuapp.com',
+ lolhuman : 'https://api.lolhuman.xyz',
+ neoxr : 'https://api.neoxr.my.id',
+ nrtm : 'https://nurutomo.herokuapp.com',
+ nzcha : 'http://nzcha-apii.herokuapp.com',
+ pencarikode : 'https://pencarikode.xyz',
+ violetics : 'https://violetics.pw',
+ xteam : 'https://api.xteam.xyz',
+ zahir : 'https://zahirr-web.herokuapp.com',
+ zekais : 'http://zekais-api.herokuapp.com',
     
 /*============== SOCIAL ==============*/
 
 // kalo ga punya ketik "-" atau biarin aja biar ada creditsnya :v
-global.sig = 'https://instagram.com/Xiao_yan_21' //Link Instagrammu
-global.sgh = 'https://github.com/ImYanXiao' //Link Githubmu
-global.sgc = 'https://chat.whatsapp.com/DyBMXDw1IshFM9z0ZHZNlR'
-global.sdc = '-' //Isi Pake Link Discordmu Kalo Gada Biarin aja
-global.snh = 'https://nhentai.net/g/HaramTod🗿' //Hmmm, Ini boleh kalian isi terserah :v
+global.sig = '-' //Link Instagrammu
+import { watchFile, unwatchFile } from 'fs'
+import chalk from 'chalk'
+import { fileURLToPath } from 'url'
+import fs from 'fs'
+import moment from 'moment-timezone'
 
-/*============== PAYMENT ==============*/
-global.pdana = '085932251730' //Nomor Danamu
-global.ppulsa = '085932251730' //Nomor SimCard Yang Kamu Pake
-global.psaweria = 'https://saweria.com/XiaoYan021' //Link Saweriamu Kalo Nggada Ketik - aja
-
-/*============== NOMOR ==============*/
-global.nomorbot = '6285932251730' //Nomor Bot
-global.nomorown = '6285932251730' //Nomor Owner
-global.namebot = 'Zenshuki BOT' //Nama Bot
-global.nameown = 'Fey - Zen' // Nama Owner
-
-
-/*============== STAFF ==============*/
+/*Oᴡɴᴇʀ number*/
 global.owner = [
-  ['6285932251730', '❦ F e y - Z e n 🎐', true] //Ganti jd nomormu sama Namamu
-  // [number, dia creator/owner?, dia developer?]
-] // Put your number here
-global.mods = [] // Want some help?
-global.prems = [] // Premium user bukan disini nambahinnya, ketik .addprem @user 10
+  ['6285932251730', '️One', true],
+  ['6285932251730', '️Two', true],
+  ['6285932251730', '️Three', true],
+  ['6285932251730', '️Four', true],
+  ['6285932251730', '️Five', true],
+  ['6285932251730', '️Six', true],
+  ['6285932251730', '️Seven', true],
+  ['6285932251730', '️Eight', true],
+  ['6285932251730', '️Nine', true],
+  ['6285932251730', '️Teen', true]
+]
+global.mods = []
+global.prems = []
+global.girlfren = []
 
-
-global.lolkey = 'apikeymu'
-global.xkey = 'APIKEYMU'
-/*============== API ==============*/
-global.APIs = { // API Prefix
-  // name: 'https://website'
-  nrtm: 'https://nurutomo.herokuapp.com',
-  xteam: 'https://api.xteam.xyz',
-  zahir: 'https://zahirr-web.herokuapp.com',
-  lol: 'https://api.lolhuman.xyz',
-  ana: 'https://anabotofc.herokuapp.com/',
-  adiisus: 'https://adiixyzapi.herokuapp.com',
-  violetics : 'https://violetics.pw', 
-  males : 'https://malesin.xyz',
-   zennno : 'https://zennoapi.herokuapp.com/'
-}
-global.APIKeys = { // APIKey Here
-  // 'https://website': 'apikey'
-  'https://api.xteam.xyz': 'APIKEYMU',
-  'https://anabotofc.herokuapp.com/': 'AnaBot',
-  'https://api.lolhuman.xyz': 'Apikeymu',
-  'https://zahirr-web.herokuapp.com': 'zahirgans',
-  'https://violetics.pw': 'beta',
-  'https://zennoapi.herokuapp.com/' : 'zenshuki'
-}
-// Kata APIKEY itu isi dengan apikey lu sendiri, dengan beli ke website itu
-
-/*============== WATERMARK ==============*/
-global.wm = '                「 ᴇʟᴀɪɴᴀ 𝙱𝙾𝚃 汉  」' //Main Watermark
-global.wm2 = '꒷︶꒷꒥꒷ ‧₊˚ ꒰ฅ˘ᴇʟᴀɪɴᴀ - ᴄʜᴀɴ˘ฅ ꒱ ‧₊˚꒷︶꒷꒥꒷'
-global.wm3 = '⫹⫺ Zenshuki 𝙱𝙾𝚃'
-global.botdate = `⫹⫺ 𝗛𝗮𝗿𝗶: ${week} ${date}`
-global.bottime = `𝗪𝗮𝗸𝘁𝘂 : ${wktuwib}`
-global.titlebot = '🎋 ┊ 𝗥𝗣𝗚 ʙᴏᴛ ᴡʜᴀᴛsᴀᴘᴘ'
-global.author = global.wm
-global.logo = 'https://ibb.co/17RY7x9'
-
-
-
-/*============== LOGO ==============*/
+/*Website*/
+global.APIs = {
+ amel : 'https://melcanz.com',
+ bg : 'http://bochil.ddns.net',
+ bsbt : 'https://rest-beni.herokuapp.com',
+ bx : 'https://bx-hunter.herokuapp.com',
+ dhnjing : 'https://dhnjing.xyz',
+ dzx : 'https://api.dhamzxploit.my.id',
+ erdwepe : 'https://erdwpe-api.herokuapp.com',
+ fdci : 'https://api.fdci.se',
+ hardianto : 'https://hardianto.xyz',
+ jonaz : 'https://jonaz-api-v2.herokuapp.com',
+ LeysCoder : 'https://leyscoders-api.herokuapp.com',
+ lolhuman : 'https://api.lolhuman.xyz',
+ neoxr : 'https://api.neoxr.my.id',
+ nrtm : 'https://nurutomo.herokuapp.com',
+ nzcha : 'http://nzcha-apii.herokuapp.com',
+ pencarikode : 'https://pencarikode.xyz',
+ violetics : 'https://violetics.pw',
+ xteam : 'https://api.xteam.xyz',
+ zahir : 'https://zahirr-web.herokuapp.com',
+ zekais : 'http://zekais-api.herokuapp.com',
 global.thumb = 'https://telegra.ph/file/0c6ff83f2adbcf4693314.gif' //Main Thumbnail
 global.thumb2 = 'https://telegra.ph/file/26b515d170f1e599f78a7.jpg'
 global.thumbbc = 'https://telegra.ph/file/05f874dc87f7e27fa8127.jpg' //For broadcast
