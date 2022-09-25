@@ -1,103 +1,36 @@
-let { MessageType } = (await import('@adiwajshing/baileys')).default
+import fetch from 'node-fetch'
+let handler = async (m, { conn, usedPrefix, text, args, command }) => {
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
+let name = await conn.getName(who)
 
-let handler  = async (m, { conn, command, args, usedPrefix, DevMode }) => {
-  let type = (args[0] || '').toLowerCase()
-  let _type = (args[0] || '').toLowerCase()
 
-//------- NOMOR
-  let nowner = `${nomorown.split`@`[0]}@s.whatsapp.net`
-  let teksnomor = `${htki} *OWNER* ${htka}
-✦ @${nomorown.split`@`[0]} ✦
-------- ${nameown} -------
-
-📮 *Note:*
-• Owner tidak menerima save contact
-• Owner berhak blockir tanpa alasan
-• Berbicaralah yang sopan & tidak spam
-• Owner Hanya merespon yang berkaitan dengan BOT
-• No Telp`
-
-//------------ BIO
-let ppown = 'https://telegra.ph/file/cce9ab4551f7150f1970d.jpg'
-let teksbio = `${htki} *BIODATA* ${htka}
-${htjava} *💌 Nama* : Yan Xiao
-${htjava} *✉️ Nama RL* : Rahasia🗿
-${htjava} *♂️ Gender* : Boys
-${htjava} *🕋 Agama* : Islam
-${htjava} *⏰ Tanggal lahir* : 15 Oktober 2004
-${htjava} *🎨 Umur* : 17
-${htjava} *🧮 Kelas* : 12
-${htjava} *🧩 Hobby* : Nonton Donghua, Chatting, Musik, Recode script bot
-${htjava} *💬 Sifat* : Idiot, Tidak Ramah, Bilek, Prik, Nolep
-${htjava} *🗺️ Tinggal* : Indo, Tulungagung, Jawa Timur
-${htjava} *❤️ Suka* : kucing
-${htjava} *💔 Benci* : autis, seleb
-
-${htjava} *📷 ɪɴsᴛᴀɢʀᴀᴍ* : ${sig}
-${htjava} *🇫  ғᴀᴄᴇʙᴏᴏᴋ* : Fay Cat's Kun
-${htjava} *🐈 ɢɪᴛʜᴜʙ:* ${sgh}
-•·––––––––––––––––––––––––––·•
-`
-  let teks = 'Pilih dibawah kak ! o(〃＾▽＾〃)o'
-const sections = [
-   {
-	title: `${htjava} OWNER –––––––––·•`,
-	rows: [
-	    {title: "📱 • Nomor", rowId: ".owner nomor"},
-	{title: "🎨 • Biodata", rowId: ".owner bio"},
-	{title: "🌎 • Script", rowId: ".sc"},
-	]
-    },{
-	title: `${htjava} SUPPORT ME –––––––·•`,
-	rows: [
-	    {title: "💹 • Donasi", rowId: ".owner nomor"},
-	{title: "🔖 • Sewa", rowId: ".sewa"},
-	{title: "🌟 • Buy Premium", rowId: ".premium"},
-	]
-  },
-]
-
-const listMessage = {
-  text: teks,
-  footer: null,
-  title: `${htki} *OWNER* ${htka}`,
-  buttonText: "Click Here !",
-  sections
+if (command == 'owner') {
+ let vcard = `BEGIN:VCARD\nVERSION:3.0\nN:WhatsApp;Saya Owner Zenshuki;Bot;;Md\nFN:Saya Owner Zenshuki Bot WhatsApp, Md\nNICKNAME:👑 Owner Zenshuki Bot\nORG:Wudy\nTITLE:soft\nitem1.TEL;waid=6285932251730:+62 859-3225-1730\nitem1.X-ABLabel:📞 Nomor Owner\nitem2.URL:https://s.id/Cerdasin62\nitem2.X-ABLabel:💬 More\nitem3.EMAIL;type=INTERNET:---💌 Mail Owner Zenshuki 𝑩𝒐𝒕𝒛\nitem4.ADR:;;🇮🇩 Indonesia;;;;\nitem4.X-ABADR:💬 More\nitem4.X-ABLabel:📍 Lokasi Saya\nBDAY;value=date:🔖 13 January 2001\nEND:VCARD`
+const tag_own = await conn.sendMessage(m.chat, { contacts: { displayName: wm, contacts: [{ vcard }] }}, { quoted: fakes })
+let caption = `👋 Hai *${name} @${who.split("@")[0]}*, Nih Owner *${conn.user.name}* kak`
+    await conn.sendButton(m.chat, caption, author, null, [['🎀 Sapa Owner', 'Huuu']], m, { quoted: tag_own, mentions: conn.parseMention(caption) })
 }
-
+if (command == 'pengembang') {
+  let vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;${author};;;\nFN:${author}\nORG:${author}\nTITLE:\nitem1.TEL;waid=6285932251730:+62 859-3225-1730\nitem1.X-ABLabel:${author}\nX-WA-BIZ-DESCRIPTION:${htjava} Nih pengembang ku kack yg Ganteng\nX-WA-BIZ-NAME:${author}\nEND:VCARD`
+await conn.sendMessage(m.chat, { contacts: { displayName: wm, contacts: [{ vcard }] }}, { quoted: fakes })
+}
+if (command == 'creator') {
   try {
-    if (/(creator|owner)/i.test(command)) {
-      const count = args[1] && args[1].length > 0 ? Math.min(99999999, Math.max(parseInt(args[1]), 1)) : !args[1] || args.length < 3 ? 1 : Math.min(1, count)
-        switch (type) {
-          case 'nomor':
-          conn.reply(m.chat, teksnomor, m, { contextInfo: { mentionedJid: [nowner] }})
-            break
-            case 'bio':
-          conn.sendHydrated(m.chat, teksbio, wm, ppown, sig, "📷 Instagram", nomorown, '🌹 Nomor', [[null, null], [null, null],[null,null]], m)
-            break
-            
-          default:
-            return await conn.sendMessage(m.chat, listMessage, m, { contextInfo: { mentionedJid: [m.sender] }})
-        }
-    } else if (/enchant|enchan/i.test(command)) {
-      const count = args[2] && args[2].length > 0 ? Math.min(99999999, Math.max(parseInt(args[2]), 1)) : !args[2] || args.length < 4 ? 1 :Math.min(1, count)
-      switch (_type) {
-        case 't':
-          break
-        case '':
-          break
-
-        default:
-          return conn.sendButton( m.chat, caption, wm, null, [`⋮☰ Menu`, `.menu`], m)
-      }
-    }
-  } catch (err) {
-    m.reply("Error\n\n\n" + err.stack)
+  const sentMsg = await conn.sendContactArray(m.chat, [
+    [`${nomorown}`, `${await conn.getName(nomorown+'@s.whatsapp.net')}`, `👑 Developer Bot `, `🚫 Don't call me 🥺`, `-`, `🇮🇩 Indonesia`, `🚀 -`, `👤 Gada pawang nih senggol dong 😔`],
+    [`${conn.user.jid.split('@')[0]}`, `${await conn.getName(conn.user.jid)}`, `🔥 Bot WhatsApp 🐣`, `📵 Don't spam/call me 😢`, `Nothing`, `🇮🇩 Indonesia`, `🚀 https://s.id/Cerdasin62/`, `🤖 Hanya bot biasa yang kadang suka eror ☺`]
+  ], fakes)
+  await conn.reply(m.chat, `Halo kak @${m.sender.split(`@`)[0]} itu nomor ownerku , jangan di spam ya ka😉`, sentMsg, {mentions: [m.sender]})
+  } catch {
+  const sentMsg = await conn.sendContact(m.chat, `${nomorown}`, `${await conn.getName(nomorown+'@s.whatsapp.net')}`, m)
+  await conn.reply(m.chat, `Halo kak @${m.sender.split(`@`)[0]} itu nomor team developerku, jangan di apa-apain ya kak😖`, sentMsg, {mentions: [m.sender]})
+  }
   }
 }
+handler.help = ['owner', 'creator']
+handler.tags = ['info']
 
-handler.help = ['owner', 'creaor']
-handler.tags = ['main', 'info']
-handler.command = /^(owner|creator)/i
+handler.command = /^(owner|pengembang|creator)$/i
 
 export default handler
